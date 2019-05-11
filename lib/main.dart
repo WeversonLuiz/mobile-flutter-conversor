@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
     );
 
     Container containerBtn = Container(
-      height: 50,
+      height: 200,
       child: raisedButton,
     );
 
@@ -67,10 +67,14 @@ class _HomeState extends State<Home> {
         ],
     );
 
+    SingleChildScrollView singleChildScrollView = SingleChildScrollView(
+      child: column,
+    );
+
     Scaffold scaffold = Scaffold(
       appBar: appBar,
       backgroundColor: Colors.white,
-      body: column,
+      body: singleChildScrollView,
     );
 
     return scaffold;
