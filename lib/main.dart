@@ -15,6 +15,8 @@ class _HomeState extends State<Home> {
   TextEditingController celsiusController = TextEditingController();
   TextEditingController farenheitController = TextEditingController();
 
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   void _resetFields() {
     celsiusController.text = "";
     farenheitController.text = "";
@@ -41,12 +43,18 @@ class _HomeState extends State<Home> {
       ],
     );
 
-    Icon icon = Icon(Icons.wb_sunny, size: 120, color: Colors.amber,);
+    //Icon icon = Icon(Icons.wb_sunny, size: 120, color: Colors.amber,);
+
+    Image imgLogo = Image.asset("assets/images/logo.png", height: 120, width: 120,);
     TextStyle styleDecoration = TextStyle(color: Colors.blue, fontSize: 20);
     TextStyle styleField = TextStyle(color: Colors.black);
 
     RaisedButton raisedButton = RaisedButton(
-      onPressed: _converter,
+      onPressed: () {
+        if (_formKey.currentState.validate()) {
+          _converter();
+        }
+      },
       child: Text("Calcular"),
       color: Colors.blueAccent,
     );
@@ -61,7 +69,7 @@ class _HomeState extends State<Home> {
         child: containerBtn,
     );
 
-    TextField tempCelsius = TextField(
+    TextFormField tempCelsius = TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: "Temperatura em Celsius",
@@ -70,9 +78,14 @@ class _HomeState extends State<Home> {
       textAlign: TextAlign.center,
       style: styleField,
       controller: celsiusController,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Informe um valor";
+        }
+      },
     );
 
-    TextField tempFarenheit = TextField(
+    TextFormField tempFarenheit = TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: "Temperatura em Farenheit",
@@ -81,17 +94,28 @@ class _HomeState extends State<Home> {
       textAlign: TextAlign.center,
       style: styleField,
       controller: farenheitController,
+      /*validator: (value) {
+        if (value.isEmpty) {
+          return "Informe um valor";
+        }
+      },
+      */
     );
 
     Column column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          icon, tempCelsius, tempFarenheit, padding,
+          imgLogo, tempCelsius, tempFarenheit, padding,
         ],
     );
 
-    SingleChildScrollView singleChildScrollView = SingleChildScrollView(
+    Form form = Form(
       child: column,
+      key: _formKey,
+    );
+
+    SingleChildScrollView singleChildScrollView = SingleChildScrollView(
+      child: form,
       padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
     );
 
