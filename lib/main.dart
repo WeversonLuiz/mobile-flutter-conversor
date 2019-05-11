@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
     );
 
     Container containerBtn = Container(
-      height: 200,
+      height: 60,
       child: raisedButton,
     );
 
@@ -73,7 +73,8 @@ class _HomeState extends State<Home> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: "Temperatura em Celsius",
-          labelStyle: styleDecoration,
+          labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+          border: OutlineInputBorder(),
       ),
       textAlign: TextAlign.center,
       style: styleField,
@@ -88,8 +89,10 @@ class _HomeState extends State<Home> {
     TextFormField tempFarenheit = TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
-          labelText: "Temperatura em Farenheit",
-          labelStyle: styleDecoration,
+          labelText: "Graus Farenheit",
+          labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+          border: OutlineInputBorder(),
+          suffixText: "F",
       ),
       textAlign: TextAlign.center,
       style: styleField,
@@ -105,7 +108,7 @@ class _HomeState extends State<Home> {
     Column column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          imgLogo, tempCelsius, tempFarenheit, padding,
+          imgLogo, tempCelsius, Divider(), tempFarenheit, padding,
         ],
     );
 
