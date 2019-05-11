@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
     AppBar appBar = AppBar(
       title: Text("Conversor de Temperatura"),
       centerTitle: true,
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.blue,
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.refresh),
@@ -25,9 +25,34 @@ class _HomeState extends State<Home> {
       ],
     );
 
+    Icon icon = Icon(Icons.wb_sunny, size: 120, color: Colors.amber,);
+    TextStyle styleDecoration = TextStyle(color: Colors.blue, fontSize: 20);
+    TextStyle styleField = TextStyle(color: Colors.black);
+
+    TextField tempCelsius = TextField(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+          labelText: "Temperatura em Celsius",
+          labelStyle: styleDecoration,
+      ),
+      textAlign: TextAlign.center,
+      style: styleField,
+    );
+
+    TextField tempFarenheit = TextField(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+          labelText: "Temperatura em Farenheit",
+          labelStyle: styleDecoration,
+      ),
+      textAlign: TextAlign.center,
+      style: styleField,
+    );
+
     Column column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          icon, tempCelsius, tempFarenheit,
         ],
     );
 
