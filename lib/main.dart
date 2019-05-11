@@ -11,6 +11,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  TextEditingController celsiusController = TextEditingController();
+  TextEditingController farenheitController = TextEditingController();
+
+  void _resetFields() {
+    celsiusController.text = "";
+    farenheitController.text = "";
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -21,7 +30,7 @@ class _HomeState extends State<Home> {
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.refresh),
-          onPressed: () {},),
+          onPressed: _resetFields,),
       ],
     );
 
@@ -53,6 +62,7 @@ class _HomeState extends State<Home> {
       ),
       textAlign: TextAlign.center,
       style: styleField,
+      controller: celsiusController,
     );
 
     TextField tempFarenheit = TextField(
@@ -63,6 +73,7 @@ class _HomeState extends State<Home> {
       ),
       textAlign: TextAlign.center,
       style: styleField,
+      controller: farenheitController,
     );
 
     Column column = Column(
