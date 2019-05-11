@@ -13,6 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+
     AppBar appBar = AppBar(
       title: Text("Conversor de Temperatura"),
       centerTitle: true,
@@ -24,8 +25,16 @@ class _HomeState extends State<Home> {
       ],
     );
 
+    Column column = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+        ],
+    );
+
     Scaffold scaffold = Scaffold(
       appBar: appBar,
+      backgroundColor: Colors.white,
+      body: column,
     );
 
     return scaffold;
