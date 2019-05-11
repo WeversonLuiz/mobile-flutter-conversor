@@ -40,6 +40,11 @@ class _HomeState extends State<Home> {
       child: raisedButton,
     );
 
+    Padding padding = Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: containerBtn,
+    );
+
     TextField tempCelsius = TextField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
@@ -63,12 +68,13 @@ class _HomeState extends State<Home> {
     Column column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          icon, tempCelsius, tempFarenheit, containerBtn,
+          icon, tempCelsius, tempFarenheit, padding,
         ],
     );
 
     SingleChildScrollView singleChildScrollView = SingleChildScrollView(
       child: column,
+      padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
     );
 
     Scaffold scaffold = Scaffold(
