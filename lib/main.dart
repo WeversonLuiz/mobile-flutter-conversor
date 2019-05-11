@@ -29,6 +29,17 @@ class _HomeState extends State<Home> {
     TextStyle styleDecoration = TextStyle(color: Colors.blue, fontSize: 20);
     TextStyle styleField = TextStyle(color: Colors.black);
 
+    RaisedButton raisedButton = RaisedButton(
+      onPressed: () {},
+      child: Text("Calcular"),
+      color: Colors.blueAccent,
+    );
+
+    Container containerBtn = Container(
+      height: 50,
+      child: raisedButton,
+    );
+
     TextField tempCelsius = TextField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
@@ -52,7 +63,7 @@ class _HomeState extends State<Home> {
     Column column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          icon, tempCelsius, tempFarenheit,
+          icon, tempCelsius, tempFarenheit, containerBtn,
         ],
     );
 
